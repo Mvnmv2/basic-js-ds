@@ -61,7 +61,7 @@ class BinarySearchTree {
 
     }
 
-    find( data ) {
+    find(data) {
         return searchWithin(this.sroot, data);
 
         function searchWithin(node, data) {
@@ -79,9 +79,47 @@ class BinarySearchTree {
         }
     }
 
-    remove(/* data */) {
-        throw new NotImplementedError('Not implemented');
-        // remove line with error and write your code here
+    remove(data) {
+        this.sroot = removeRoot(this.sroot, data);
+
+        function removeRoot(node, data) {
+            if (!node) {
+                return null;
+            }
+
+            if (data < node.data) {
+                node.left = removeRoot(node.left, data);
+                return node;
+            } else if (data > node.data) {
+                node.right = removeRoot(node.right, data);
+                return node;
+            } else {
+                if (!node.left && !node.right) {
+                    return null;
+                }
+
+                if (!node.left) {
+                    node = node.right
+                    return node;
+                }
+                if (!node.right) {
+                    node = node.left
+                    return node;
+                }
+
+                let minFromRight = node.right;
+                while (minFromRight.left) {
+                    minFromRight = minFromRight.left
+                }
+                node.data = minFromRight.data;
+
+                node.right = removeRoot(node.right, minFromRight.data);
+
+                return node;
+
+            }
+        }
+
     }
 
     min() {
