@@ -13,8 +13,6 @@ class BinarySearchTree {
 
 
     root() {
-        // throw new NotImplementedError('Not implemented');
-        // remove line with error and write your code here
         if (this.sroot == null) {
             return null;
         }
@@ -22,41 +20,51 @@ class BinarySearchTree {
     }
 
 
-add(/* data */)
-{
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-}
+    add(data) {
+        this.sroot = addWithin(this.sroot, data);
 
-has(/* data */)
-{
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-}
+        function addWithin(node, data) {
+            if (!node) {
+                return new Node(data);
+            }
+            if (node.data === data) {
+                return node;
+            }
 
-find(/* data */)
-{
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-}
+            if(data < node.data){
+                node.left = addWithin(node.left, data);
+            } else {
+                node.right = addWithin(node.right, data);
+            }
 
-remove(/* data */)
-{
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-}
+            return node;
+        }
+    }
 
-min()
-{
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-}
+    has(/* data */) {
+        throw new NotImplementedError('Not implemented');
+        // remove line with error and write your code here
+    }
 
-max()
-{
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-}
+    find(/* data */) {
+        throw new NotImplementedError('Not implemented');
+        // remove line with error and write your code here
+    }
+
+    remove(/* data */) {
+        throw new NotImplementedError('Not implemented');
+        // remove line with error and write your code here
+    }
+
+    min() {
+        throw new NotImplementedError('Not implemented');
+        // remove line with error and write your code here
+    }
+
+    max() {
+        throw new NotImplementedError('Not implemented');
+        // remove line with error and write your code here
+    }
 }
 
 module.exports = {
